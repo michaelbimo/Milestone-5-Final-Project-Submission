@@ -55,10 +55,40 @@ def infer_provisional_archetype(text: object) -> str:
             return label
     return "other suspected fraud or disputed transaction"
 
+def clean_for_generation(text: str) -> str:
+    """Normalize noisy CFPB redaction markers before generation."""
+
+    value = str(text)
+
+    # Collapse repeated "redacted" tokens.
+    value = re.sub(
+        r"\b(?:redacted\s+){1,}redacted\b",
+        "[REDACTED]",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    # Collapse repeated [REDACTED] markers.
+    value = re.sub(
+        r"(?:\[REDACTED\]\s*){2,}",
+        "[REDACTED] ",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    # Normalize whitespace.
+    value = re.sub(r"\s+", " ", value).strip()
+
+    return value
 
 def build_structured_record(row: Any, text_column: str, max_input_words: int) -> dict[str, Any]:
     """Convert one dataframe row into the structured generator input."""
-    clean_text = truncate_words(row[text_column], max_input_words)
+    clean_text = clean_for_generation(
+    truncate_words(
+            row[text_column],
+            max_input_words
+        )
+    )
     red_flags = extract_red_flags(clean_text)
     archetype = infer_provisional_archetype(clean_text)
     risk_level, risk_score = score_risk(red_flags, archetype)
@@ -75,14 +105,11 @@ def build_structured_record(row: Any, text_column: str, max_input_words: int) ->
 
 
 def build_generation_prompt(record: dict[str, Any]) -> str:
-    """Create the fact-grounded FLAN-T5 instruction prompt."""
+    """Create a concise, grounded complaint-summary prompt."""
+
     return (
-        "Generate a concise two-sentence fraud intelligence summary for an analyst. "
-        "Use only the supplied fields. Do not invent names, amounts, dates, organizations, "
-        "or actions. State uncertainty when the complaint is ambiguous.\n"
-        f"Complaint: {record['clean_text']}\n"
-        f"Provisional archetype: {record['archetype']}\n"
-        f"Red flags: {format_red_flags(record['red_flags'])}\n"
-        f"Risk level: {record['risk_level']}\n"
+        "Summarize the following consumer complaint in two concise sentences "
+        "for a fraud analyst. Do not invent facts.\n\n"
+        f"Complaint: {record['clean_text']}\n\n"
         "Summary:"
     )
