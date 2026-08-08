@@ -75,15 +75,12 @@ def build_structured_record(row: Any, text_column: str, max_input_words: int) ->
 
 
 def build_generation_prompt(record: dict[str, Any]) -> str:
-    """Create a compact, fact-grounded FLAN-T5 instruction prompt."""
+    """Create a compact structured prompt for fraud-summary generation."""
     return (
-        "Write only a two-sentence fraud intelligence summary. "
-        f"Begin the first sentence with: Risk level: {record['risk_level']}. "
-        "Describe the suspected fraud pattern and the most relevant evidence. "
-        "Do not repeat these instructions. "
-        "Do not add facts that are not provided.\n\n"
+        "Summarize this fraud complaint for an analyst in two sentences.\n\n"
         f"Complaint: {record['clean_text']}\n"
-        f"Suspected pattern: {record['archetype']}\n"
-        f"Red flags: {format_red_flags(record['red_flags'])}\n\n"
-        "Summary:"
+        f"Fraud pattern: {record['archetype']}\n"
+        f"Red flags: {format_red_flags(record['red_flags'])}\n"
+        f"Risk: {record['risk_level']}\n\n"
+        "Fraud intelligence summary:"
     )
