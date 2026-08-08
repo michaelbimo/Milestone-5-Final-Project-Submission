@@ -105,13 +105,11 @@ def build_structured_record(row: Any, text_column: str, max_input_words: int) ->
 
 
 def build_generation_prompt(record: dict[str, Any]) -> str:
-    """Create a grounded complaint-summary prompt for FLAN-T5."""
+    """Create a concise, grounded complaint-summary prompt."""
 
     return (
-        "Summarize this consumer complaint for a fraud analyst in no more than "
-        "two sentences. Describe only what happened to the consumer. "
-        "Do not speculate, assign blame, or add facts that are not stated "
-        "in the complaint.\n\n"
-        f"Complaint:\n{record['clean_text']}\n\n"
+        "Summarize the following consumer complaint in two concise sentences "
+        "for a fraud analyst. Do not invent facts.\n\n"
+        f"Complaint: {record['clean_text']}\n\n"
         "Summary:"
     )
