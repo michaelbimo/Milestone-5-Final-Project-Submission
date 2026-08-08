@@ -1,0 +1,31 @@
+project:
+  seed: 42
+
+data:
+  path: data/processed/complaints_clean.csv.gz
+  text_column: clean_text
+  raw_text_column: Consumer complaint narrative
+  id_column: Complaint ID
+  group_column: Sub-product
+  minimum_words: 10
+  max_input_words: 220
+
+model:
+  pretrained_name: google/flan-t5-small
+  local_finetuned_path: models/generator
+  prefer_local_finetuned_model: true
+  max_input_tokens: 512
+  max_new_tokens: 96
+  num_beams: 4
+  batch_size: 4
+  device: auto
+
+inference:
+  number_of_samples: 10
+
+outputs:
+  directory: outputs
+  text_file: samples.txt
+  jsonl_file: samples.jsonl
+  metadata_file: run_metadata.json
+  description_file: output_description.md

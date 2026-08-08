@@ -1,0 +1,24 @@
+project:
+  seed: 42
+
+experiment:
+  number_of_samples: 30
+  prompt_styles:
+    - baseline
+    - structured
+
+model:
+  pretrained_name: google/flan-t5-small
+  max_input_tokens: 512
+  max_new_tokens: 96
+  num_beams: 4
+  batch_size: 4
+  device: auto
+
+results:
+  directory: results
+  experiments_directory: results/experiments
+  figures_directory: results/figures
+  metrics_file: results/metrics.json
+  comparison_file: results/model_comparison.csv
+  human_template_file: results/human_evaluation_template.csv

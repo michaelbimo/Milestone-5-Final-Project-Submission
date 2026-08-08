@@ -1,0 +1,13 @@
+{
+  "started_at_utc": "2026-07-26T16:24:19.474383+00:00",
+  "finished_at_utc": "2026-07-26T16:24:19.474402+00:00",
+  "dataset_path": "data/processed/complaints_clean.csv.gz",
+  "dataset_rows_loaded": 25576,
+  "samples_selected": 10,
+  "model_source": "google/flan-t5-small",
+  "device": "not loaded",
+  "prepare_only": true,
+  "quality_checks": {
+    "status": "prepare-only; model inference was skipped"
+  }
+}

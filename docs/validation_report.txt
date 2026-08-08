@@ -1,0 +1,8 @@
+Milestone 4 validation report
+
+- Python source compilation: PASS
+- Preprocessed dataset load: PASS (25,576 rows)
+- Representative sample selection: PASS (10 samples)
+- Structured signal and prompt creation: PASS
+- Prepare-only output writing: PASS
+- Full FLAN-T5 inference: NOT RUN in this offline build environment; run in Google Colab.

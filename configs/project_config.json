@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "raw_csv": "data/raw/complaints.csv",
+  "processed_dir": "data/processed",
+  "filter_scam_candidates": false,
+  "min_words": 10,
+  "max_words_discovery": 250,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "classifier_models": [
+    "distilbert/distilbert-base-uncased",
+    "FacebookAI/roberta-base"
+  ],
+  "generator_model": "google/flan-t5-small"
+}

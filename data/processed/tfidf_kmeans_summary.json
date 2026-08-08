@@ -1,0 +1,8 @@
+{
+  "sample_size": 3000,
+  "k": 8,
+  "silhouette_cosine": 0.012206057330885011,
+  "largest_cluster_share": 0.29233333333333333,
+  "smallest_cluster_size": 1,
+  "selected_for_final_pipeline": false
+}
