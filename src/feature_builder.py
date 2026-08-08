@@ -78,6 +78,9 @@ def build_generation_prompt(record: dict[str, Any]) -> str:
     """Create the fact-grounded FLAN-T5 instruction prompt."""
     return (
         "Generate a concise two-sentence fraud intelligence summary for an analyst. "
+        "Explicitly state the supplied risk level using the exact phrase "
+        "'Risk level: Low', 'Risk level: Medium', or 'Risk level: High'. "
+        "Include the most relevant red flags and the provisional scam archetype when supported. "
         "Use only the supplied fields. Do not invent names, amounts, dates, organizations, "
         "or actions. State uncertainty when the complaint is ambiguous.\n"
         f"Complaint: {record['clean_text']}\n"
