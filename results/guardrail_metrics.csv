@@ -1,0 +1,3 @@
+prompt_style,samples,valid_generation_count,valid_generation_rate,fallback_count,fallback_rate
+baseline,30,23,0.7666666666666667,7,0.23333333333333334
+structured,30,16,0.5333333333333333,14,0.4666666666666667

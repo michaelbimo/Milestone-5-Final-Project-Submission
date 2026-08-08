@@ -31,14 +31,22 @@ from src.data_loader import (
     load_preprocessed_dataset,
     select_representative_samples,
 )
+
 from src.feature_builder import (
     build_generation_prompt,
     build_structured_record,
 )
+
 from src.model_runner import (
     generate_summaries,
     resolve_device,
 )
+
+from src.output_validation import (
+    build_extractive_fallback,
+    validate_generated_summary,
+)
+
 from utils.helpers import (
     ensure_directory,
     set_global_seed,
@@ -247,18 +255,12 @@ def main() -> int:
         )
     )
 
-    sample_frame = (
-        select_representative_samples(
-            frame,
-            number_of_samples=n_samples,
-            seed=seed,
-            group_column=data_cfg[
-                "group_column"
-            ],
-            id_column=data_cfg[
-                "id_column"
-            ],
-        )
+    sample_frame = select_representative_samples(
+        frame,
+        number_of_samples=n_samples,
+        seed=seed,
+        group_column=data_cfg["group_column"],
+        id_column=data_cfg["id_column"],
     )
 
     # Build the same underlying records once.
@@ -338,6 +340,7 @@ def main() -> int:
             ]
 
         else:
+
             raise ValueError(
                 "Unsupported prompt style: "
                 f"{prompt_style}"
@@ -349,9 +352,11 @@ def main() -> int:
             prompts,
             strict=True,
         ):
+
             row["prompt_style"] = (
                 prompt_style
             )
+
             row["prompt"] = prompt
 
         # -----------------------------------------------------
@@ -377,7 +382,7 @@ def main() -> int:
             )
 
             # -------------------------------------------------
-            # Store raw generation and final analyst output
+            # Validate model outputs and build analyst outputs
             # -------------------------------------------------
 
             for row, summary in zip(
@@ -386,32 +391,87 @@ def main() -> int:
                 strict=True,
             ):
 
-                # Keep the original FLAN-T5 output.
-                #
-                # This field should be used for evaluation of
-                # the generative model itself.
+                # ---------------------------------------------
+                # Preserve raw FLAN-T5 output
+                # ---------------------------------------------
+
+                raw_summary = summary.strip()
+
                 row["generated_summary"] = (
-                    summary.strip()
+                    raw_summary
                 )
+
+                # ---------------------------------------------
+                # Validate generated summary
+                # ---------------------------------------------
+
+                is_valid, validation_issues = (
+                    validate_generated_summary(
+                        raw_summary
+                    )
+                )
+
+                row["generation_valid"] = (
+                    is_valid
+                )
+
+                row["validation_issues"] = (
+                    validation_issues
+                )
+
+                # ---------------------------------------------
+                # Choose model output or fallback
+                # ---------------------------------------------
+
+                if is_valid:
+
+                    validated_summary = (
+                        raw_summary
+                    )
+
+                    summary_source = (
+                        "flan_t5"
+                    )
+
+                else:
+
+                    validated_summary = (
+                        build_extractive_fallback(
+                            row["clean_text"]
+                        )
+                    )
+
+                    summary_source = (
+                        "extractive_fallback"
+                    )
+
+                # Store the summary actually used
+                # by the final system.
+                row["validated_summary"] = (
+                    validated_summary
+                )
+
+                row["summary_source"] = (
+                    summary_source
+                )
+
+                # ---------------------------------------------
+                # Create final analyst-facing output
+                # ---------------------------------------------
 
                 if prompt_style == "structured":
 
-                    # The final system output combines the
-                    # deterministic fraud signals with the
-                    # generated narrative summary.
                     row["analyst_output"] = (
                         build_analyst_output(
                             row,
-                            summary,
+                            validated_summary,
                         )
                     )
 
                 else:
 
-                    # The baseline has no deterministic
-                    # analyst-intelligence layer.
                     row["analyst_output"] = (
-                        summary.strip()
+                        validated_summary
                     )
 
         else:

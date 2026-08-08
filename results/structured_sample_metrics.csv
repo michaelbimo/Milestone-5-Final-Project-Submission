@@ -1,0 +1,31 @@
+evaluation_variant,sample_number,complaint_id,prompt_style,summary_field,summary,summary_source,generation_valid,validation_issues,non_empty,summary_words,risk_mention,red_flag_coverage,archetype_keyword_coverage,unsupported_number_rate,source_token_support
+structured_raw,1,11817563,structured,generated_summary,Consumer complaint: i sent money_amount to redacted account and it never added. i logged into my other redacted accounts and everything was gone from both accounts. [REDACTED] and the other money_amount.,flan_t5,True,,1.0,31,0.0,0.5,0.25,0.0,0.875
+structured_raw,2,13817257,structured,generated_summary,"[REDACTED] , married woman on redacted az.",flan_t5,True,,1.0,7,0.0,0.0,0.0,0.0,1.0
+structured_raw,3,7227374,structured,generated_summary,Do not invent facts. Do not invent facts.,extractive_fallback,False,instruction_echo; repeated_sentence,1.0,8,0.0,0.0,0.0,0.0,0.0
+structured_raw,4,14840055,structured,generated_summary,i was a victim of redacted fraudulent transactions processed via payment_app,flan_t5,True,,1.0,11,0.0,0.0,0.25,0.0,1.0
+structured_raw,5,7145537,structured,generated_summary,Do not invent facts.,extractive_fallback,False,instruction_echo,1.0,4,0.0,0.0,0.0,0.0,0.0
+structured_raw,6,15982261,structured,generated_summary,Do not invent facts.,extractive_fallback,False,instruction_echo,1.0,4,0.0,0.0,0.0,0.0,0.0
+structured_raw,7,4202344,structured,generated_summary,i am writing this complaint because i was trying to get a refund for my [REDACTED] account ended up getting sent to a weird customer service to where they try to get my bank card information in my personal information they ended up getting ahold of it in a try to debit my account for money_amount money_amount on 2 separate transactions and the payment_app is the company that he was using i have the actual,flan_t5,True,,1.0,75,0.0,1.0,0.5,0.0,1.0
+structured_raw,8,7571971,structured,generated_summary,redacted / redacted /28,extractive_fallback,False,redaction_dominated,1.0,4,0.0,0.0,0.0,0.0,1.0
+structured_raw,9,4703081,structured,generated_summary,a fraud analyst.,extractive_fallback,False,instruction_echo,1.0,3,0.0,0.0,0.0,0.0,0.0
+structured_raw,10,2726110,structured,generated_summary,i received a cashiers check in the amount of redacted it came special delivery through the mail.,flan_t5,True,,1.0,17,0.0,1.0,0.25,0.0,1.0
+structured_raw,11,6152892,structured,generated_summary,Consumer complaint: a fraud analyst.,extractive_fallback,False,instruction_echo,1.0,5,0.0,0.0,0.0,0.0,0.0
+structured_raw,12,4516979,structured,generated_summary,i applied for a job on redacted for an [REDACTED] position for a school.,flan_t5,True,,1.0,14,0.0,0.0,0.0,0.0,1.0
+structured_raw,13,1620540,structured,generated_summary,Consumer complaint: a customer of rush card.,flan_t5,True,,1.0,7,0.0,1.0,0.0,0.0,0.6
+structured_raw,14,1620841,structured,generated_summary,Do not invent facts. Do not invent facts.,extractive_fallback,False,instruction_echo; repeated_sentence,1.0,8,0.0,1.0,0.0,0.0,0.0
+structured_raw,15,1868179,structured,generated_summary,i received a redacted gift card as a birthday present.,flan_t5,True,,1.0,10,0.0,0.0,0.0,0.0,1.0
+structured_raw,16,2273730,structured,generated_summary,Do not invent facts.,extractive_fallback,False,instruction_echo,1.0,4,0.0,1.0,0.0,0.0,0.0
+structured_raw,17,1762402,structured,generated_summary,Consumer complaint: redacted / redacted / 2015,flan_t5,True,,1.0,7,0.0,1.0,0.0,0.0,0.5
+structured_raw,18,2400987,structured,generated_summary,Consumer complaint: reloadit packs were added to two different reloadit safes.,flan_t5,True,,1.0,11,0.0,0.0,0.0,0.0,0.7142857142857143
+structured_raw,19,1372947,structured,generated_summary,[REDACTED] received a congratulation email from [REDACTED],flan_t5,True,,1.0,7,0.0,1.0,0.0,0.0,1.0
+structured_raw,20,2110713,structured,generated_summary,redacted / redacted /2016.,extractive_fallback,False,redaction_dominated,1.0,4,0.0,1.0,0.0,0.0,1.0
+structured_raw,21,2044874,structured,generated_summary,"Consumer complaint: i was issued a promotional money_amount prepaid card from bank bank. it was not clear to me that on the "" good through '' date on the card the funds would "" disappear. '' the card clearly says debit on it, and i thought it would be treated like my bank debit card.",flan_t5,True,,1.0,55,0.0,1.0,0.0,0.0,0.9090909090909091
+structured_raw,22,1295778,structured,generated_summary,i was a victim of a scam.,flan_t5,True,,1.0,7,0.0,0.0,0.2,0.0,1.0
+structured_raw,23,1591580,structured,generated_summary,Do not invent facts.,extractive_fallback,False,instruction_echo,1.0,4,0.0,1.0,0.0,0.0,0.0
+structured_raw,24,1653254,structured,generated_summary,[REDACTED],extractive_fallback,False,too_short; redaction_dominated,1.0,1,0.0,1.0,0.0,0.0,1.0
+structured_raw,25,6791314,structured,generated_summary,"i called bank redacted / redacted / redacted immediately [REDACTED] woke up and saw my account drained at redacted to report fraudulent withdrawals. i again called bank on redacted / redacted / redacted at redacted to check the status of my claim, and they told me their investigation could not prove that there was fraud, and that they would not refund my money.",flan_t5,True,,1.0,63,0.0,0.0,0.3333333333333333,0.0,1.0
+structured_raw,26,7738299,structured,generated_summary,i fell victim to a multilayered scam operation orchestrated by [REDACTED] .,flan_t5,True,,1.0,12,0.0,1.0,0.3333333333333333,0.0,1.0
+structured_raw,27,6027650,structured,generated_summary,Redacted / redacted / /2022,extractive_fallback,False,redaction_dominated,1.0,5,0.0,1.0,0.0,0.0,1.0
+structured_raw,28,3317711,structured,generated_summary,Report fraud to the authorities.,flan_t5,True,,1.0,5,0.0,0.0,0.0,0.0,0.6666666666666666
+structured_raw,29,4593113,structured,generated_summary,[REDACTED],extractive_fallback,False,too_short; redaction_dominated,1.0,1,0.0,0.0,0.0,0.0,1.0
+structured_raw,30,11521586,structured,generated_summary,Do not invent facts about payment_app.,extractive_fallback,False,instruction_echo,1.0,6,0.0,0.0,0.25,0.0,0.25

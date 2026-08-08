@@ -1,0 +1,27 @@
+project:
+  seed: 2026
+
+experiment:
+  number_of_samples: 30
+
+  prompt_styles:
+    - baseline
+    - structured
+
+  exclude_complaint_ids_file: configs/development_complaint_ids.txt
+
+model:
+  pretrained_name: google/flan-t5-small
+  max_input_tokens: 512
+  max_new_tokens: 96
+  num_beams: 4
+  batch_size: 4
+  device: auto
+
+results:
+  directory: results/final_test
+  experiments_directory: results/final_test/experiments
+  figures_directory: results/final_test/figures
+  metrics_file: results/final_test/metrics.json
+  comparison_file: results/final_test/model_comparison.csv
+  human_template_file: results/final_test/human_evaluation_template.csv

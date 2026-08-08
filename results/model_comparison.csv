@@ -1,0 +1,5 @@
+evaluation_variant,prompt_style,samples,non_empty_output_rate,average_summary_words,risk_level_mention_rate,mean_red_flag_coverage,mean_archetype_keyword_coverage,mean_unsupported_number_rate,mean_source_token_support
+baseline_raw,baseline,30,1.0,16.366666666666667,0.0,0.48333333333333334,0.10388888888888889,0.0,0.8014708994708994
+structured_raw,structured,30,1.0,13.333333333333334,0.0,0.45,0.07888888888888888,0.0,0.6505014430014431
+baseline_validated,baseline,30,1.0,24.566666666666666,0.0,0.48333333333333334,0.12611111111111112,0.0,0.8514708994708994
+structured_validated,structured,30,1.0,28.366666666666667,0.0,0.48333333333333334,0.1288888888888889,0.0,0.9421681096681097

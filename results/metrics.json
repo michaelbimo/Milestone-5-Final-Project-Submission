@@ -1,0 +1,77 @@
+{
+  "raw_model": {
+    "baseline": {
+      "samples": 30,
+      "non_empty_output_rate": 1.0,
+      "average_summary_words": 16.366666666666667,
+      "risk_level_mention_rate": 0.0,
+      "mean_red_flag_coverage": 0.48333333333333334,
+      "mean_archetype_keyword_coverage": 0.10388888888888889,
+      "mean_unsupported_number_rate": 0.0,
+      "mean_source_token_support": 0.8014708994708994
+    },
+    "structured": {
+      "samples": 30,
+      "non_empty_output_rate": 1.0,
+      "average_summary_words": 13.333333333333334,
+      "risk_level_mention_rate": 0.0,
+      "mean_red_flag_coverage": 0.45,
+      "mean_archetype_keyword_coverage": 0.07888888888888888,
+      "mean_unsupported_number_rate": 0.0,
+      "mean_source_token_support": 0.6505014430014431
+    }
+  },
+  "validated_summary": {
+    "baseline": {
+      "samples": 30,
+      "non_empty_output_rate": 1.0,
+      "average_summary_words": 24.566666666666666,
+      "risk_level_mention_rate": 0.0,
+      "mean_red_flag_coverage": 0.48333333333333334,
+      "mean_archetype_keyword_coverage": 0.12611111111111112,
+      "mean_unsupported_number_rate": 0.0,
+      "mean_source_token_support": 0.8514708994708994
+    },
+    "structured": {
+      "samples": 30,
+      "non_empty_output_rate": 1.0,
+      "average_summary_words": 28.366666666666667,
+      "risk_level_mention_rate": 0.0,
+      "mean_red_flag_coverage": 0.48333333333333334,
+      "mean_archetype_keyword_coverage": 0.1288888888888889,
+      "mean_unsupported_number_rate": 0.0,
+      "mean_source_token_support": 0.9421681096681097
+    }
+  },
+  "guardrail": {
+    "baseline": {
+      "samples": 30,
+      "valid_generation_count": 23,
+      "invalid_generation_count": 7,
+      "valid_generation_rate": 0.7666666666666667,
+      "fallback_count": 7,
+      "fallback_rate": 0.23333333333333334,
+      "validation_issue_counts": {
+        "instruction_echo": 2,
+        "redaction_dominated": 5,
+        "repeated_sentence": 1,
+        "too_short": 2
+      }
+    },
+    "structured": {
+      "samples": 30,
+      "valid_generation_count": 16,
+      "invalid_generation_count": 14,
+      "valid_generation_rate": 0.5333333333333333,
+      "fallback_count": 14,
+      "fallback_rate": 0.4666666666666667,
+      "validation_issue_counts": {
+        "instruction_echo": 9,
+        "repeated_sentence": 2,
+        "redaction_dominated": 5,
+        "too_short": 2
+      }
+    }
+  },
+  "human_final_output": {}
+}
