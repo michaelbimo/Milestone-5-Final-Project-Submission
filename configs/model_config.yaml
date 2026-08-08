@@ -11,7 +11,7 @@ data:
   max_input_words: 220
 
 model:
-  pretrained_name: google/flan-t5-small
+  pretrained_name: google/flan-t5-base
   local_finetuned_path: models/generator
   prefer_local_finetuned_model: true
   max_input_tokens: 512
