@@ -75,17 +75,15 @@ def build_structured_record(row: Any, text_column: str, max_input_words: int) ->
 
 
 def build_generation_prompt(record: dict[str, Any]) -> str:
-    """Create the fact-grounded FLAN-T5 instruction prompt."""
+    """Create a compact, fact-grounded FLAN-T5 instruction prompt."""
     return (
-        "Generate a concise two-sentence fraud intelligence summary for an analyst. "
-        "Explicitly state the supplied risk level using the exact phrase "
-        "'Risk level: Low', 'Risk level: Medium', or 'Risk level: High'. "
-        "Include the most relevant red flags and the provisional scam archetype when supported. "
-        "Use only the supplied fields. Do not invent names, amounts, dates, organizations, "
-        "or actions. State uncertainty when the complaint is ambiguous.\n"
+        "Write only a two-sentence fraud intelligence summary. "
+        f"Begin the first sentence with: Risk level: {record['risk_level']}. "
+        "Describe the suspected fraud pattern and the most relevant evidence. "
+        "Do not repeat these instructions. "
+        "Do not add facts that are not provided.\n\n"
         f"Complaint: {record['clean_text']}\n"
-        f"Provisional archetype: {record['archetype']}\n"
-        f"Red flags: {format_red_flags(record['red_flags'])}\n"
-        f"Risk level: {record['risk_level']}\n"
+        f"Suspected pattern: {record['archetype']}\n"
+        f"Red flags: {format_red_flags(record['red_flags'])}\n\n"
         "Summary:"
     )
